@@ -1,0 +1,47 @@
+    <meta property="og:site_name" content="{{ site.Title }}" />
+    <meta name="application-name" content="{{ site.Title }}" />
+    <meta name="twitter:site" content="@{{ $.Site.Params.social.x_username }}" />
+        
+    {{ if (isset .Params "author") }}
+    <meta name="author" content="{{ .Param "author" }}" />
+    <meta property="article:author" content="{{ .Param "author" }}" />
+    {{ else }}
+    <meta name="author" content="{{ $.Site.Params.biography.name }}" />
+    <meta property="article:author" content="{{ $.Site.Params.biography.name }}" />
+    {{ end }}
+
+    {{ if (isset .Params "tags") }}
+        {{- range .Params.tags }}
+        <meta property="article:tag" content="{{ . }}" />
+        {{- end }}
+    {{ end}}
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "{{ $.Site.Params.biography.name }}",
+        "familyName": "{{ index (findRE "(\\w|[-])+$" $.Site.Params.biography.name) 0 }}",
+        "gender": "{{ $.Site.Params.biography.gender }}",
+        "image": {{ printf "%s" (index $.Site.Params.images 0) }},
+        "email": "mailto:{{ $.Site.Params.biography.email }}",
+        "url": {{ printf "%s" site.BaseURL }},
+        "sameAs": [
+            "https://github.com/{{ $.Site.Params.social.github_username }}",
+            "https://gitlab.com/{{ $.Site.Params.social.gitlab_username }}",
+            "https://www.last.fm/user/{{ $.Site.Params.social.lastfm_username}}",
+            "https://www.linkedin.com/in/{{ $.Site.Params.social.linkedin_url }}/",
+            "https://x.com/{{ $.Site.Params.social.x_username }}"
+        ],
+        "knowsAbout": [
+            {{- $len_knowsAbout := len $.Site.Params.biography.knows_about }}
+            {{- range $index, $knowsAbout := $.Site.Params.biography.knows_about }}
+                {{- if ne (add $index 1) $len_knowsAbout }}
+            {{ . }},
+                {{- else }}
+            {{ . }}
+                {{- end }}
+            {{- end }}
+        ]
+    }
+    </script>

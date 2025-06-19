@@ -1,0 +1,123 @@
+---
+###############################################################################
+#                                                                             #
+#                            WEBSITE CONFIGURATION                            #
+#                                                                             #
+###############################################################################
+
+
+# --- base website settings ---
+
+title: Example Hugo site with Toph theme
+baseURL: https://jwwheeler.gitlab.io/toph-hugo/
+theme: toph
+languageCode: en-us
+enableEmoji: true
+enableGitInfo: true
+enableRobotsTXT: false
+googleAnalytics: ""
+
+
+# --- security settings ---
+
+security:
+  exec:
+    allow: ['^dart-sass-embedded$', '^git$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
+
+
+# --- markup settings ---
+
+markup:
+  asciidocExt:
+    preserveTOC: true
+
+
+# --- privacy settings ---
+
+privacy:
+  googleAnalytics:
+    anonymizeIP: true
+    respectDoNotTrack: true
+  twitter:
+    enableDNT: true
+  vimeo:
+    enableDNT: true
+  youtube:
+    privacyEnhanced: true
+
+
+# --- navigation menu ---
+
+menu:
+  nav:
+    - identifier: home
+      name: home
+      url: /
+      weight: 10
+    - identifier: about
+      name: about me
+      url: https://kinginstitute.stanford.edu/encyclopedia/clark-septima-poinsette
+      weight: 20
+  social:
+    - identifier: facebook
+      name: Facebook
+      url: https://www.facebook.com/KingInstitute
+      weight: 10
+    - identifier: x
+      name: Twitter/X
+      url: https://x.com/MLKInstitute
+      weight: 20
+
+
+# --- custom settings ---
+
+params:
+  biography:
+    name: Septima Poinsette Clark
+    gender: Female
+    email: septima@example.com
+    blog: https://kinginstitute.stanford.edu/encyclopedia/clark-septima-poinsette
+    first_online: 1898
+    knows_about: [
+      "activism",
+      "Civil Rights Movement",
+      "Martin Luther King Jr.",
+      "United States"
+    ]
+  colors:
+    primary: "#8c1515"
+    secondary: "#ffffff"
+    accent: "#696349"
+  description: Honorary biography page of Septima Clark, a Civil Rights Movement pioneer and activist.
+  fonts:
+    default: Lato
+    title: Lobster Two
+    header: Patua One
+  images:
+    - /toph-hugo/img/septima.jpg
+  favicon: /toph-hugo/favicon.ico
+  git_repo: https://gitlab.com/jwwheeler/toph-hugo
+  # Are you looking for new opportunities? Set hire_me to "true" if you want your LinkedIn to show on the nav bar and
+  # for boilerplate text on how to get in touch.
+  hire_me: false
+  social:
+    github_username: ""
+    gitlab_username: ""
+    lastfm_username: ""
+    linkedin_url: company/the-king-center-for-nonviolent-social-change/
+    x_username: mlk_institute
+
+
+# --- internationalization settings ---
+
+defaultContentLang: en
+languages:
+  ar:
+    disabled: true
+    languageDirection: rtl
+    languageName: عربي
+  en:
+    languageName: English
+  es:
+    disabled: true
+    languageName: español

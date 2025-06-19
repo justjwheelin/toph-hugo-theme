@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="{{ .Page.Language | default "en" }}"{{ if .Site.Language.LanguageDirection }} dir="{{ .Site.Language.LanguageDirection }}"{{ end }}>
+    {{- partial "head.html" . -}}
+    <body>
+        {{- partial "nav.html" . -}}
+        {{- partial "header.html" . -}}
+        <main class="container" aria-label="Content">
+            {{- block "main" . }}{{- end }}
+        </main>
+        {{- partial "footer.html" . -}}
+    </body>
+</html>

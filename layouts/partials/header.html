@@ -1,0 +1,9 @@
+<header>
+    <div class="container-fluid text-center">
+        {{ if .IsHome }}
+        <h1>{{ .Param "biography.name" }}</h1>
+        {{ else }}
+        <h1>{{ .Title }}</h1>
+        {{ end }}
+    </div>
+</header>

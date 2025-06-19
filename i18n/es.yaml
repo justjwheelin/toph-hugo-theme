@@ -1,0 +1,35 @@
+---
+- 404_page:
+    body: No se encontró la página solicitada.
+    header: "Página no encontrada"
+
+- footer:
+    find_this_site: Encuentra este sitio en GitLab
+
+- hire_me:
+    body: >
+      <strong>Actualmente estoy buscando nuevas oportunidades.</strong>
+      Por favor, póngase en contacto conmigo si está interesado en trabajar juntos.
+      Encuéntrame por <a href="mailto:{{ $.Site.Params.biography.email }}">correo electrónico</a> o <a href="https://www.linkedin.com/in/{{ $.Site.Params.social.linkedin_url }}" target="_blank">LinkedIn</a> para ponerte en contacto.
+    header: ¿Me contratará?
+
+- index:
+    default:
+      body: >
+        El sitio está funcionando.
+        Comience a personalizar esta página de inicio según tus preferencias.
+        Tiene tres formas de cambiar esta página de índice:
+      customize_step1: >
+        Cree un documento <code>_index.es.md</code> o <code>_index.es.adoc</code> en la carpeta <code><b>content/</b></code>.
+        Llénalo con contenido Markdown o AsciiDoc.
+      customize_step2: >
+        Cree un archivo <b>index.html</b> en la carpeta <b>static/</b>.
+        Llénalo con contenido HTML.
+      customize_step3: Configure su servidor web para redirigir automáticamente el tráfico de la página de inicio a una página específica.
+      header: Personaliza tu página de inicio
+    rounded_profile_image: Imagen de
+
+- misc:
+    logo: "Logotipo de {{ .Title }}"
+    next: Próximo
+    previous: Anterior

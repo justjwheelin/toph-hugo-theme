@@ -1,0 +1,13 @@
+<div class="container-fluid" id="projects">
+    {{ range where .Site.RegularPages ".Params.categories" "intersect" (slice "projects") }}
+    <div class="container" id="{{ .Slug }}">
+        <h3 class="p-3 rounded border text-center">{{ .Title }}</h3>
+        {{ if .Param "icon" -}}
+            <img class="img-fluid mx-auto d-block" style="max-height: 10vh;" src="{{ .Param "icon" }}" alt="{{ i18n "misc.logo" . }}" title="{{ i18n "misc.logo" . }}">
+        {{- end }}
+        <div class="p-3">
+        {{ .Content }}
+        </div>
+    </div>
+    {{ end }}
+</div>

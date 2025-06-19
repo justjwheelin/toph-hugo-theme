@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-light ms-3 mt-2">
+    <div class="container-fluid">
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                {{ $currentPage := . }}
+                {{ range .Site.Menus.nav }}
+                    <li class="nav-item">
+                        <a class="nav-link{{ if eq .URL $currentPage.RelPermalink }} active" aria-current="page"{{ else }}"{{ end }} href="{{ .URL }}">{{ .Name }}</a>
+                    </li>
+                {{ end }}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">social</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {{ range .Site.Menus.social }}
+                        <li><a class="dropdown-item" href="{{ .URL }}">{{ .Name }}</a></li>
+                    {{ end }}
+                    </ul>
+                </li>
+                {{- if .IsTranslated }}
+                    {{ "<!-- language selector -->" | safeHTML }}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">translations</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <select id="select-language" onchange="location = this.value;">
+                            {{ $siteLanguages := site.Languages}}
+                            {{ $pageLang := .Page.Lang}}
+                            {{ range .Page.AllTranslations }}
+                                {{ $translation := .}}
+                                {{ range $siteLanguages }}
+                                    {{ if eq $translation.Lang .Lang }}
+                                        {{ $selected := false }}
+                                        {{ if eq $pageLang .Lang}}
+                                            <option id="{{ $translation.Language }}" class="active dropdown-item" value="{{ $translation.Permalink }}" selected>{{ .LanguageName }}</option>
+                                        {{ else }}
+                                            <option id="{{ $translation.Language }}" class="dropdown-item" value="{{ $translation.Permalink }}">{{ .LanguageName }}</option>
+                                        {{ end }}
+                                    {{ end }}
+                                {{ end }}
+                            {{ end }}
+                            </select>
+                        </ul>
+                    </li>
+                    {{ "<!-- /language selector -->" | safeHTML }}
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+</nav>

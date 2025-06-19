@@ -1,0 +1,28 @@
+<div id="projects-carousel" class="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    {{ range $index, $value := where .Site.RegularPages ".Params.categories" "intersect" (slice "projects") }}
+    <button type="button" data-bs-target="#projects-carousel" data-bs-slide-to="{{ $index }}"{{ if eq $index 0 }} class="active" aria-current="true"{{ end }} aria-label="{{ $value.Title }}"></button>
+    {{ end }}
+  </div>
+  <div class="carousel-inner">
+      {{ range $index, $value := where .Site.RegularPages ".Params.categories" "intersect" (slice "projects") }}
+      <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
+        <a href="#{{ .Slug }}">
+          {{ if .Param "icon" }}
+            <img src="{{ $value.Param "icon" }}" class="img-fluid d-block my-5 mx-auto pc-fixed-height" alt="{{ i18n "misc.logo" . }}" title="{{ i18n "misc.logo" . }}">
+          {{ else }}
+            <h3 class="d-flex align-items-center justify-content-center my-5 pc-fixed-height">{{ $value.Param "title" }}</h3>
+          {{ end }}
+        </a>
+      </div>
+      {{ end }}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#projects-carousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">{{ i18n "misc.previous" }}</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#projects-carousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">{{ i18n "misc.next" }}</span>
+  </button>
+</div>

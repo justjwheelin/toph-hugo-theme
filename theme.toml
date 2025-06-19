@@ -1,0 +1,14 @@
+# See https://github.com/gohugoio/hugoThemes#themetoml for an example
+
+name = "Toph"
+license = "MPL-2.0"
+licenselink = "https://github.com/justjwheelin/toph-hugo-theme/blob/main/LICENSE.txt"
+description = "A lightweight, responsive theme for a biography site, for use with Hugo static site generator"
+homepage = "https://jwf.io"
+tags = ["biography", "minimal"]
+features = []
+min_version = "0.112.0"
+
+[author]
+  name = "Justin Wheeler"
+  homepage = "https://jwf.io"
