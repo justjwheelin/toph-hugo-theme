@@ -35,8 +35,8 @@ Use the commands below to add the theme to an existing Hugo site:
 
 ```bash
 cd /path/to/hugo-site/
-mkdir --parents themes/toph/
-git submodule add git@github.com:jwflory/toph-hugo.git themes/toph
+mkdir themes/
+git submodule add git@github.com:justjwheelin/toph-hugo-theme.git themes/toph
 git commit --signoff --message="Add Toph theme as a git submodule"
 git push
 ```
